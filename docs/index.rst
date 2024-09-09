@@ -1,10 +1,7 @@
-The mockup package
-==================
+The dsp_pandas package
+======================
 
-Mockup is a Python package with some simple example code.
-To get started, explore the :class:`mockup.Circle` class.
-
-
+Data Science Platform (dsp) package to gather pandas functions across projects.
 
 .. toctree::
    :hidden:
@@ -18,7 +15,7 @@ To get started, explore the :class:`mockup.Circle` class.
    :maxdepth: 2
    :caption: Contents:
 
-   reference/mockup
+   reference/dsp_pandas
 
 .. toctree::
    :hidden:

@@ -4,10 +4,8 @@
 
 from importlib import metadata
 
-__version__ = metadata.version("rasmussenlab-mockup")
-
-from .mockup import add_one, Circle
+__version__ = metadata.version("dsp_pandas")
 
 # The __all__ variable is a list of variables which are imported
 # when a user does "from example import *"
-__all__ = ["add_one", "Circle"]
+__all__ = []

@@ -12,7 +12,7 @@ Install the docs dependencies of the package (as speciefied in toml):
 
 ```bash
 # in main folder
-pip install .[docs]
+pip install ".[docs]"
 ```
 
 ## Build docs using Sphinx command line tools
@@ -25,7 +25,7 @@ Options:
 ```bash	
 # pwd: docs
 # apidoc
-sphinx-apidoc --force --implicit-namespaces --module-first -o reference ../src/mockup
+sphinx-apidoc --force --implicit-namespaces --module-first -o reference ../src/dsp_pandas
 # build docs
 sphinx-build -n -W --keep-going -b html ./ ./_build/
 ```
