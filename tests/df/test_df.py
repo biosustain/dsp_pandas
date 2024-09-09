@@ -5,9 +5,9 @@ import dsp_pandas.df
 
 def test_unique_cols():
     s = pd.Series([1, 1, 1, 1, 1])
-    assert dsp_pandas.df.unique_cols(s) == True
+    assert dsp_pandas.df.unique_cols(s)
     s = pd.Series([1, 1, 1, 1, 2])
-    assert dsp_pandas.df.unique_cols(s) == False
+    assert not dsp_pandas.df.unique_cols(s)
 
 
 def test_get_unique_non_unique_columns():
