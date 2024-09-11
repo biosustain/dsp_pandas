@@ -9,6 +9,7 @@ Data Science Platform (dsp) package to gather pandas functions across projects.
    :caption: Tutorial
    
    tutorial/tutorial
+   tutorial/excel_read
 
 .. toctree::
    :hidden:
