@@ -13,7 +13,6 @@
 import os
 from importlib import metadata
 
-
 # -- Project information -----------------------------------------------------
 
 project = "dsp_pandas"

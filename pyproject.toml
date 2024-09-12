@@ -17,7 +17,7 @@ classifiers = [
   "License :: OSI Approved :: MIT License",
   "Operating System :: OS Independent",
 ]
-dependencies = ["pandas"]
+dependencies = ["pandas", "openpyxl"]
 
 [project.urls]
 "Bug Tracker" = "https://github.com/biosustain/dsp_pandas/issues"
