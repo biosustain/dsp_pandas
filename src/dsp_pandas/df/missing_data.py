@@ -6,7 +6,6 @@ Taken from pimms-learn.
 from __future__ import annotations
 
 import math
-from pathlib import Path
 from typing import Union
 
 import pandas as pd
