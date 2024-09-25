@@ -4,7 +4,7 @@ from types import SimpleNamespace
 
 import pandas as pd
 
-__all__ = ["get_unique_non_unique_columns"]
+__all__ = ["get_unique_and_non_unique_columns"]
 
 
 def unique_cols(s: pd.Series) -> bool:
@@ -25,7 +25,7 @@ def unique_cols(s: pd.Series) -> bool:
     return (s.iloc[0] == s).all()
 
 
-def get_unique_non_unique_columns(df: pd.DataFrame) -> SimpleNamespace:
+def get_unique_and_non_unique_columns(df: pd.DataFrame) -> SimpleNamespace:
     """Get back a namespace with an column.Index both
     of the unique and non-unique columns.
 
@@ -46,6 +46,16 @@ def get_unique_non_unique_columns(df: pd.DataFrame) -> SimpleNamespace:
     columns.unique = df.columns[mask_unique_columns]
     columns.non_unique = df.columns[~mask_unique_columns]
     return columns
+
+
+def drop_unique_columns(df: pd.DataFrame) -> pd.DataFrame:
+    """Filter out non-unique columns from a DataFrame."""
+    return df[get_unique_and_non_unique_columns(df).non_unique]
+
+
+def drop_non_unique_columns(df: pd.DataFrame) -> pd.DataFrame:
+    """Filter out non-unique columns from a DataFrame."""
+    return df[get_unique_and_non_unique_columns(df).non_unique]
 
 
 def combine_value_counts(X: pd.DataFrame, dropna=True) -> pd.DataFrame:

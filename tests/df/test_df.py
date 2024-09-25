@@ -10,11 +10,25 @@ def test_unique_cols():
     assert not dsp_pandas.df.unique_cols(s)
 
 
-def test_get_unique_non_unique_columns():
+def test_get_unique_and_non_unique_columns():
     df = pd.DataFrame({"a": [1, 1, 1, 1, 1], "b": [1, 1, 1, 1, 2]})
     exp = {"unique": ["a"], "non_unique": ["b"]}
-    act = dsp_pandas.df.get_unique_non_unique_columns(df).__dict__
+    act = dsp_pandas.df.get_unique_and_non_unique_columns(df).__dict__
     assert act == exp
+
+
+def test_drop_unique_columns():
+    df = pd.DataFrame({"a": [1, 1, 1, 1, 1], "b": [1, 1, 1, 1, 2]})
+    exp = pd.DataFrame({"b": [1, 1, 1, 1, 2]})
+    act = dsp_pandas.df.drop_unique_columns(df)
+    pd.testing.assert_frame_equal(act, exp)
+
+
+def test_drop_non_unique_columns():
+    df = pd.DataFrame({"a": [1, 1, 1, 1, 1], "b": [1, 1, 1, 1, 2]})
+    exp = pd.DataFrame({"b": [1, 1, 1, 1, 2]})
+    act = dsp_pandas.df.drop_non_unique_columns(df)
+    pd.testing.assert_frame_equal(act, exp)
 
 
 def test_combine_value_counts():
