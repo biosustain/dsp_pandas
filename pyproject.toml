@@ -1,16 +1,15 @@
 [project]
 authors = [
-  { name = "Jakob Nybo Nissen", email = "jakobnybonissen@gmail.com" },
-  { name = "Henry Webel", email = "henry.webel@sund.ku.dk" },
+  { name = "Henry Webel", email = "heweb@dtu.dk" },
 ]
-description = "A small example package"
+description = "Pandas related custom functions for data analysis."
 name = "dsp_pandas"
 # This means: Load the version from the package itself.
 # See the section below: [tools.setuptools.dynamic]
 dynamic = ["version"]
 readme = "README.md"
 # We use features for Python 3.11, so we test it here.
-requires-python = ">=3.11"
+requires-python = ">=3.9"
 # These are keywords
 classifiers = [
   "Programming Language :: Python :: 3",
