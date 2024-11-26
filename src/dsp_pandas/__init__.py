@@ -11,9 +11,10 @@ from importlib import metadata
 __version__ = metadata.version("dsp_pandas")
 
 from . import format as pd_format
+from . import io
 
 # The __all__ variable is a list of variables which are imported
 # when a user does "from example import *"
-__all__ = ["pd_format"]
+__all__ = ["pd_format", "io"]
 
 pd_format.set_pandas_number_formatting()
