@@ -29,11 +29,13 @@ def read_all_excel_sheets(
         # Get the sheet names
         sheet_names = excel_reader.sheet_names
         sheets = SimpleNamespace(sheet_names=sheet_names)
-
-        for sheet_name in sheet_names:
+        sheets_names_attr = [
+            sheet_name.strip().replace(" ", "_") for sheet_name in sheet_names
+        ]
+        sheets.sheet_names_attr = sheets_names_attr
+        for sheet_name, sheet_attr in zip(sheet_names, sheets_names_attr):
             _df = excel_reader.parse(sheet_name, index_col=index_col)
             if drop_empty:
                 _df = _df.dropna(axis=1, how="all").dropna(axis=0, how="all")
-            sheet_name = sheet_name.replace(" ", "_")
-            setattr(sheets, sheet_name, _df)
+            setattr(sheets, sheet_attr, _df)
     return sheets
