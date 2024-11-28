@@ -1,5 +1,7 @@
 """Helper to read and write data from and to different formats."""
 
+from __future__ import annotations
+
 from pathlib import Path
 from types import SimpleNamespace
 
