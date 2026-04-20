@@ -41,3 +41,11 @@ def read_all_excel_sheets(
                 _df = _df.dropna(axis=1, how="all").dropna(axis=0, how="all")
             setattr(sheets, sheet_attr, _df)
     return sheets
+
+
+def read_diann_proteingroups(fn: str) -> tuple[pd.DataFrame, pd.DataFrame]:
+    """Read a DIANN report.pg_matrix.tsv file and return a DataFrame with protein group information."""
+    proteingroups = pd.read_csv(fn, sep="\t", index_col=0)
+    protein_meta = proteingroups.iloc[:, :5]
+    proteingroups = proteingroups.iloc[:, 5:]
+    return protein_meta, proteingroups
