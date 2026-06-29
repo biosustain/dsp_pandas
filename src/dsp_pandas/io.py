@@ -43,9 +43,14 @@ def read_all_excel_sheets(
     return sheets
 
 
-def read_diann_proteingroups(fn: str) -> tuple[pd.DataFrame, pd.DataFrame]:
+def read_diann_proteingroups(fn: str, filter_crap: bool = True) -> tuple[pd.DataFrame, pd.DataFrame]:
     """Read a DIANN report.pg_matrix.tsv file and return a DataFrame with protein group information."""
     proteingroups = pd.read_csv(fn, sep="\t", index_col=0)
+
+    if filter_crap:
+        proteingroups = proteingroups[~proteingroups.index.str.startswith("cRAP-")]
+
     protein_meta = proteingroups.iloc[:, :5]
     proteingroups = proteingroups.iloc[:, 5:]
+
     return protein_meta, proteingroups
