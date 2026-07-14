@@ -43,13 +43,28 @@ def read_all_excel_sheets(
     return sheets
 
 
-def read_diann_proteingroups(fn: str, filter_crap: bool = True) -> tuple[pd.DataFrame, pd.DataFrame]:
-    """Read a DIANN report.pg_matrix.tsv file and return a DataFrame with protein group information."""
+def read_diann_protein_groups(fn: str, filter_crap: bool = True) -> tuple[pd.DataFrame, pd.DataFrame]:
+    """Read a DIA-NN `report.pg_matrix.tsv` file.
+
+    Parameters
+    ----------
+    fn : str
+        Path to the DIA-NN protein-group matrix TSV (`report.pg_matrix.tsv`).
+    filter_crap : bool, optional
+        If True, drop rows whose protein-group ID starts with ``cRAP-``.
+
+    Returns
+    -------
+    tuple[pd.DataFrame, pd.DataFrame]
+        (protein_meta, proteingroups) where `protein_meta` contains the first 5
+        metadata columns and `proteingroups` contains the remaining sample columns.
+    """
     proteingroups = pd.read_csv(fn, sep="\t", index_col=0)
 
     if filter_crap:
-        proteingroups = proteingroups[~proteingroups.index.str.startswith("cRAP-")]
-
+        proteingroups = proteingroups.loc[
+            ~proteingroups.index.astype(str).str.startswith("cRAP-")
+        ]
     protein_meta = proteingroups.iloc[:, :5]
     proteingroups = proteingroups.iloc[:, 5:]
 
